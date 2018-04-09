@@ -27,17 +27,12 @@ def addBias( x ):
                            )
     return tf.concat( [bias_expanded, x], 1 )
 
-def makeInitialWeight( x ):
-    return tf.Variable( tf.random_uniform([ 3, 1 ], -1.0, 1.0) )
 
 graph_nn = tf.Graph()
 with graph_nn.as_default():
     # make placeholder for input and output
     x = makePlaceholder( train_x )
     y = makePlaceholder( train_y )
-
-    ws = []
-    hs = []
 
     # NN model
     xWithBias = addBias( x )
